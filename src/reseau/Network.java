@@ -26,8 +26,13 @@ public class Network {
 	}
 	
 	//TODO : possible methods.
-	public void get_members(){
-		
+	/**
+	 */
+	public ArrayList<Member> get_members(){
+		return this.l_members;
+	}
+	public ArrayList<Task> get_tasks(){
+		return this.l_tasks;
 	}
 	/**
 	 * Method to add a new member to the network
