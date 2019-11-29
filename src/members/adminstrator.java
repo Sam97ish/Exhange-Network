@@ -2,10 +2,11 @@ package members;
 
 import java.util.ArrayList;
 
-import tasks.Service;
+import reseau.*;
+import tasks.*;
 
 public class adminstrator extends Normal {
-	
+	private Network nrk;
 	//constructor with no skills 
 	public adminstrator(String n, int m){
 		super(n,m);
@@ -16,8 +17,23 @@ public class adminstrator extends Normal {
 		super(n,m,s);
 	}
 	
-	//TODO : method to create an object network
+	/**
+	 * creates a network with empty memebers and tasks
+	 */
+	public void createNetwork() {
+		this.nrk = new Network(this); 
+		System.out.println(" the admin : " + this.get_name() + " created a new Network");
+	}
 	
+	/**
+	 * creates a network with existing memebers and tasks
+	 * @param l_members
+	 * @param l_tasks
+	 */
+	public void createNetwork( ArrayList<Member> l_members,  ArrayList<Task> l_tasks) {
+		this.nrk = new Network(this,l_members,l_tasks); 
+		System.out.println(" the admin : " + this.get_name() + " created a new Network");
+	}
 	//TODO : method to add new members to network
 	
 	//TODO : method to remove members from network
