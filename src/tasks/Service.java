@@ -10,4 +10,11 @@ public class Service {
 	}
 	
 	//TODO: accesseurs
+	public String get_name() {
+		return this.name;
+	} 
+	
+	public double get_cost() {
+		return this.cost;
+	} 
 }

@@ -3,6 +3,7 @@ package members;
 import java.util.ArrayList;
 
 import tasks.Service;
+import tasks.Task;
 
 public class Zero extends Member {
 	
@@ -15,6 +16,12 @@ public class Zero extends Member {
 	public Zero(String n, int m, ArrayList<Service> s){
 		super(n,m,s);
 	}
+
+	@Override
+	public boolean debit(Task tache) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
-	//TODO : implementation of abstract method
+	
 }

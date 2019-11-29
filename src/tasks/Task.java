@@ -34,8 +34,31 @@ public class Task {
 	}
 	
 	//TODO : accessers
+	public Service get_serv() {
+		return this.serv;
+	}
+	
+	public int get_nbworkers() {
+		return this.nbworkers;
+	}
+	
+	public Member get_patreon() {
+		return this.patreon;
+	}
+	
+	public double get_duration() {
+		return this.duration;
+	}
+	
+	public String get_description() {
+		return this.description;
+	}
 	
 	//TODO : method to calculate the real value (c*d*p)
+	public double cost() {
+		Service s = this.get_serv();
+		return this.get_duration() * this.get_nbworkers() * s.get_cost();
+	}
 	//TODO : method to search for suitable workers 
 	//TODO : method to start doing the task
 	
