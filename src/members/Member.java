@@ -35,7 +35,11 @@ public abstract class Member {
 	 */
 	public double get_wallet() {
 		return this.money;
-	} 
+	}
+	
+	public ArrayList<Service> get_skills(){
+		return this.skills;
+	}
 	
 	/**
 	 * a method to add a Service/skill to the member

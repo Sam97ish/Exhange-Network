@@ -19,8 +19,9 @@ public class Half extends Member {
 	@Override
 	public boolean debit(Task tache) {
 		double finalcost = tache.cost(); // C * D * P
-		double paycheck = finalcost / tache.get_nbworkers();
 		finalcost = finalcost/2;
+		double paycheck = finalcost / tache.get_nbworkers();
+		
 		
 		//paying the workers for a job well done.
 		ArrayList<Member> l_workers = tache.get_l_worker();
