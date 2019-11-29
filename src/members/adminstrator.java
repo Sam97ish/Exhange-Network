@@ -15,8 +15,7 @@ public class adminstrator extends Normal {
 	public adminstrator(String n, int m, ArrayList<Service> s){
 		super(n,m,s);
 	}
-	//testing eclipse on windows
-	//
+	
 	//TODO : method to create an object network
 	
 	//TODO : method to add new members to network

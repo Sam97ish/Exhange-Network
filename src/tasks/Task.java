@@ -42,6 +42,10 @@ public class Task {
 		return this.nbworkers;
 	}
 	
+	public ArrayList<Member> get_l_worker(){
+		return this.l_workers;
+	}
+	
 	public Member get_patreon() {
 		return this.patreon;
 	}

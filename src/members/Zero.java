@@ -19,8 +19,8 @@ public class Zero extends Member {
 
 	@Override
 	public boolean debit(Task tache) {
-		// TODO Auto-generated method stub
-		return false;
+		System.out.println(" this memeber is privilege enought to not pay a dime !");
+		return true;
 	}
 	
 	

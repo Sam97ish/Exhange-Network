@@ -1,5 +1,7 @@
 package reseau;
 
+import java.util.ArrayList;
+
 import members.*;
 import tasks.*;
 
@@ -11,17 +13,18 @@ public class main {
 		Member abra = new Normal("abra",400);
 		
 		Sam.addMoney(100);
-		
+		System.out.println("Sam's Money : " + Sam.get_wallet());
 		
 		Service jardinage = new Service("Jardinage", 250);
 		Sam.addSkill(jardinage);
+		ArrayList<Member> l_workers = new ArrayList<Member>();
+		l_workers.add(Sam);
+		Task mowing = new Task(jardinage, 1, abra, 1, "jardinage", l_workers);
 		
-		Task mowing = (Task) abra.createTask(jardinage, 1, 1, "mowing the lawn");
+		abra.debit(mowing);
 		
-		Sam.debit(mowing);
-		
-		System.out.println("Sam's Money : " + abra.get_wallet());
-		System.out.println("Abra's Money : " +Sam.get_wallet());
+		System.out.println("Sam's Money : " + Sam.get_wallet());
+		System.out.println("Abra's Money : " + abra.get_wallet());
 		
 		
 	}

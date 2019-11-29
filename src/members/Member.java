@@ -89,7 +89,7 @@ public abstract class Member {
 	 */
 	public boolean substractMoney(double n) {
 		this.money += n;
-		System.out.println("removed this amount of money : " + n + " from :" + this.get_name());
+		System.out.println("removed this amount of money : " + n + " from : " + this.get_name());
 		return true;
 	}
 	
