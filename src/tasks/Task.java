@@ -2,6 +2,7 @@ package tasks;
 
 import java.util.ArrayList;
 import members.*;
+import reseau.Network;
 
 public class Task {
 	private Service serv;
@@ -65,7 +66,7 @@ public class Task {
 	 * Method that runs a task by calling the method debit in the member (patreon) 
 	 * @return true if the runs without any problems or false if the task is not ready(no workers or no enough money ) 
 	 */
-	public boolean runTask() {
+	public boolean runTask(){
 		if(this.ready) {
 			System.out.println("Running the task");
 			return this.patreon.debit(this);
@@ -75,6 +76,9 @@ public class Task {
 		}
 	}
 	//TODO : method to search for suitable workers 
+	public void searchWorkers(Network n) {
+		
+	}
 	//TODO : method to start doing the task
 	
 }

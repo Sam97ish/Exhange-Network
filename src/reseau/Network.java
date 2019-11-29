@@ -26,6 +26,9 @@ public class Network {
 	}
 	
 	//TODO : possible methods.
+	public void get_members(){
+		
+	}
 	/**
 	 * Method to add a new member to the network
 	 * @param m  the new member
