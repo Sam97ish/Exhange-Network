@@ -79,10 +79,31 @@ public class Task {
 			return false;
 		}
 	}
-	//TODO : method to search for suitable workers 
+	/**
+	 * method that search and add workers that can provide the service needed and verifies whether the task is ready or not
+	 * @param n refers to the network
+	 */
 	public void searchWorkers(Network n) {
-		
+		ArrayList<Member> l_mem = n.get_members();
+		int i=0;
+		while(i < l_mem.size() && this.l_workers.size() <= this.nbworkers) {
+			if(l_mem.get(i).get_skills().contains(this.serv)) {
+				this.l_workers.add(l_mem.get(i));
+			}
+			i++;
+		}
+		if(l_workers.size() == this.nbworkers) {
+			if(this.patreon instanceof Normal && this.patreon.get_wallet() >= this.cost()) {  // for members of the class normal
+				this.ready=true;
+				
+			}else if(this.patreon instanceof Half && this.patreon.get_wallet()/2 >= this.cost()) {  // for members of the class half
+				this.ready=true;
+			}else {  // for members of the class zero
+				this.ready=true;
+			}
+			
+		}
 	}
-	//TODO : method to start doing the task
+	
 	
 }
