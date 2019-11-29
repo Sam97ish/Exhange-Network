@@ -2,6 +2,7 @@ package tasks;
 
 import java.util.ArrayList;
 import members.*;
+import reseau.Network;
 
 public class Task {
 	private Service serv;
@@ -10,6 +11,7 @@ public class Task {
 	private double duration;
 	private ArrayList<Member> l_workers;
 	private String description;
+	private boolean ready;
 	
 	//constructor with an empty array
 	public Task(Service s, int nbwo, Member pa, double time, String desc) {
@@ -20,6 +22,7 @@ public class Task {
 		this.description = desc;
 		
 		this.l_workers = new ArrayList<Member>();
+		this.ready = false;
 	}
 	
 	//constructor with list of workers given
@@ -31,6 +34,7 @@ public class Task {
 		this.description = desc;
 		
 		this.l_workers = l_wo;
+		this.ready = false;
 	}
 	
 	//TODO : accessers
@@ -58,12 +62,27 @@ public class Task {
 		return this.description;
 	}
 	
-	//TODO : method to calculate the real value (c*d*p)
 	public double cost() {
 		Service s = this.get_serv();
 		return this.get_duration() * this.get_nbworkers() * s.get_cost();
 	}
+	/**
+	 * Method that runs a task by calling the method debit in the member (patreon) 
+	 * @return true if the runs without any problems or false if the task is not ready(no workers or no enough money ) 
+	 */
+	public boolean runTask(){
+		if(this.ready) {
+			System.out.println("Running the task");
+			return this.patreon.debit(this);
+		}else {
+			System.out.println("The method can't be run");
+			return false;
+		}
+	}
 	//TODO : method to search for suitable workers 
+	public void searchWorkers(Network n) {
+		
+	}
 	//TODO : method to start doing the task
 	
 }
