@@ -19,7 +19,7 @@ public class main {
 		Sam.addSkill(jardinage);
 		ArrayList<Member> l_workers = new ArrayList<Member>();
 		l_workers.add(Sam);
-		Task mowing = new Task(jardinage, 1, abra, 1, "jardinage", l_workers);
+		Task mowing = new Task(jardinage,"mowing the lawn", 1, abra, 1, "jardinage", l_workers);
 		
 		abra.debit(mowing);
 		

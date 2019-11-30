@@ -5,21 +5,24 @@ import members.*;
 import tasks.*;
 
 public class Network {
+	private String name;
 	private Member admin;
 	private ArrayList<Member> l_members;
 	private ArrayList<Task> l_tasks;
 	
 	//constructor with empty lists
-	public Network(Member adm) {
+	public Network(Member adm,String n) {
 		this.admin = adm;
+		this.name = n;
 		
 		this.l_members = new ArrayList<Member>();
 		this.l_tasks = new ArrayList<Task>();
 	}
 	
 	//constructor with full lists given
-	public Network(Member adm, ArrayList<Member> l_m, ArrayList<Task> l_t) {
+	public Network(Member adm,String n, ArrayList<Member> l_m, ArrayList<Task> l_t) {
 		this.admin = adm;
+		this.name = n;
 		
 		this.l_members = l_m;
 		this.l_tasks = l_t;
@@ -41,6 +44,14 @@ public class Network {
 		return this.l_tasks;
 	}
 	
+	/**
+	 * returns the name of the network
+	 * @return name 
+	 */
+	public String get_name() {
+		return this.name;
+	}
+	
 	
 	/**
 	 * Method to add a new member to the network
@@ -48,7 +59,16 @@ public class Network {
 	 */
 	public void addMember(Member m) {
 		this.l_members.add(m);
-		System.out.println(m.get_name() + "has joined the network");
+		System.out.println(m.get_name() + " has joined the network ");
+	}
+	
+	/**
+	 * adds an already created list of members.
+	 * caution : will overwrite the existing list of members.
+	 * @param l_m
+	 */
+	public void addMemberList(ArrayList<Member> l_m) {
+		this.l_members = l_m;
 	}
 	
 	/**
@@ -57,7 +77,7 @@ public class Network {
 	 */
 	public void addTask(Task t) {
 		this.l_tasks.add(t);
-		System.out.println("A new task has been added to the network");
+		System.out.println("The task  : " + t.get_name() +"  has been added to the network");
 
 	}
 	
@@ -92,7 +112,7 @@ public class Network {
 	 */
 	public void removeTask(Task t) {
 		this.l_tasks.remove(t);
-		System.out.println("A task has been removed from the networt");
+		System.out.println("The task " + t.get_name() +" has been removed from the networt");
 	}
 	
 	/**

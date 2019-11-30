@@ -98,8 +98,11 @@ public abstract class Member {
 	}
 	
 	/**
-	 * a method to subtract money from a member. must behave differently depending on the sous-class.
+	 * A method to subtract/pay money from the member calling it. it will calculate a certain amount of money and will subtract it from the caller
+	 * and then pay the workers of the task given in the parameter equally.
+	 * Must behave differently depending on the social class of the member calling it.
 	 * the class using this method must check if workers has the required Service/skill
+	 * @param Task
 	 * @return boolean
 	 */
 	public abstract boolean debit(Task tache);
@@ -107,13 +110,14 @@ public abstract class Member {
 	/**
 	 * a method to allow any member to create a task in the network
 	 * @param service
+	 * @param n name
 	 * @param nbWorkers
 	 * @param duration
 	 * @param description
 	 * @param l_workers
 	 * @return (Object) (Task)
 	 */
-	public Object createTask(Service service, int nbWorkers, double duration, String description) {
-		return new Task(service, nbWorkers, this, duration, description);
+	public Object createTask(Service service,String n , int nbWorkers, double duration, String description) {
+		return new Task(service,n , nbWorkers, this, duration, description);
 	}
 }
