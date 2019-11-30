@@ -69,6 +69,14 @@ public class adminstrator extends Normal {
 		this.nrk.addMemberList(l_m);
 		System.out.println(" the admin : " + this.get_name() + " added a list of members to the network " + this.nrk.get_name());
 	}
+
+	
+	public void addMember(String name, Member m) {
+		m.changeName(name);
+		this.nrk.addMember(m);
+	}
+	
+
 	/**
 	 * removes a member from the network
 	 * @param m member
@@ -86,6 +94,12 @@ public class adminstrator extends Normal {
 		this.nrk.removeMember(s);
 		System.out.println(" the admin : " + this.get_name() + " removed the member " + s);
 	}
+	
+	public Member get_member(String name) {
+		return this.nrk.get_member(name);
+	}
+	
+	
 	
 	/**
 	 * runs all the tasks that are possible. two conditions must be met:
