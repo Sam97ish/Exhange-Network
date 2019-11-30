@@ -10,31 +10,33 @@ public class adminstrator extends Normal {
 	private Network nrk;
 	
 	//constructor with no skills 
-	public adminstrator(String n, int m){
-		super(n,m);
+	public adminstrator(String name, int money){
+		super(name,money);
 	}
 	
 	//constructor with skills given
-	public adminstrator(String n, int m, ArrayList<Service> s){
-		super(n,m,s);
+	public adminstrator(String name, int money, ArrayList<Service> skills){
+		super(name,money,skills);
 	}
 	
 	/**
 	 * creates a network with empty members and tasks
+	 * @param name of network
 	 */
-	public void createNetwork(String n) {
-		this.nrk = new Network(this, n); 
-		System.out.println(" the admin : " + this.get_name() + " created a new Network named " + n);
+	public void createNetwork(String name) {
+		this.nrk = new Network(this, name); 
+		System.out.println(" the admin : " + this.get_name() + " created a new Network named " + name);
 	}
 	
 	/**
-	 * creates a network with existing memebers and tasks
+	 * creates a network with existing members and tasks
+	 * @param n is the name of the network
 	 * @param l_members
 	 * @param l_tasks
 	 */
-	public void createNetwork(String n, ArrayList<Member> l_members,  ArrayList<Task> l_tasks) {
-		this.nrk = new Network(this,n,l_members,l_tasks); 
-		System.out.println(" the admin : " + this.get_name() + " created a new Network named " + n);
+	public void createNetwork(String name, ArrayList<Member> l_members,  ArrayList<Task> l_tasks) {
+		this.nrk = new Network(this,name,l_members,l_tasks); 
+		System.out.println(" the admin : " + this.get_name() + " created a new Network named " + name);
 	}
 	
 	/*
@@ -55,7 +57,7 @@ public class adminstrator extends Normal {
 	 */
 	public void addMember(Member m) {
 		this.nrk.addMember(m);
-		System.out.println(" the admin : " + this.get_name() + " added : the member " + m.get_name() + 
+		System.out.println(" the admin : " + this.get_name() + " added  the member " + m.get_name() + 
 							" to the network " + this.nrk.get_name());
 	}
 	/**

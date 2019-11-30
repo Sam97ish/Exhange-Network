@@ -47,7 +47,7 @@ public abstract class Member {
 	 * @return boolean
 	 */
 	public boolean addSkill(Service s) {
-		System.out.println("added skill : " + s.get_name() + " to :" + this.name );
+		System.out.println("added skill : " + s.get_name() + " to : " + this.name );
 		return this.skills.add(s);
 	}
 	
@@ -59,7 +59,7 @@ public abstract class Member {
 	 */
 	public boolean addSkill(String name, double cost) {
 		Service s = new Service(name,cost);
-		System.out.println("added skill : " + s.get_name() + " to :" + this.get_name() );
+		System.out.println("added skill : " + s.get_name() + " to : " + this.get_name() );
 		return this.skills.add(s);
 	}
 	
@@ -84,7 +84,7 @@ public abstract class Member {
 	 */
 	public void addMoney(double n) {
 		this.money += n;
-		System.out.println("added this amount of money : " + n + " to :" + this.get_name());
+		System.out.println("added this amount of money : " + n + " to : " + this.get_name());
 	}
 	
 	/**

@@ -59,7 +59,7 @@ public class Network {
 	 */
 	public void addMember(Member m) {
 		this.l_members.add(m);
-		System.out.println(m.get_name() + " has joined the network ");
+		
 	}
 	
 	/**
@@ -77,7 +77,7 @@ public class Network {
 	 */
 	public void addTask(Task t) {
 		this.l_tasks.add(t);
-		System.out.println("The task  : " + t.get_name() +"  has been added to the network");
+		
 
 	}
 	
@@ -87,7 +87,7 @@ public class Network {
 	 */
 	public void removeMember(Member m) {
 		this.l_members.remove(m);
-		System.out.println(m.get_name() + "has left the network");
+		
 	}
 	
 	/**
@@ -112,7 +112,7 @@ public class Network {
 	 */
 	public void removeTask(Task t) {
 		this.l_tasks.remove(t);
-		System.out.println("The task " + t.get_name() +" has been removed from the networt");
+		
 	}
 	
 	/**
