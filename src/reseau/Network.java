@@ -25,15 +25,23 @@ public class Network {
 		this.l_tasks = l_t;
 	}
 	
-	//TODO : possible methods.
+	
 	/**
+	 * method returns the list of members.
 	 */
 	public ArrayList<Member> get_members(){
 		return this.l_members;
 	}
+	
+	/**
+	 * method returns the list of tasks
+	 * @return l_tasks  ArrayList<Task>
+	 */
 	public ArrayList<Task> get_tasks(){
 		return this.l_tasks;
 	}
+	
+	
 	/**
 	 * Method to add a new member to the network
 	 * @param m  the new member
@@ -42,6 +50,7 @@ public class Network {
 		this.l_members.add(m);
 		System.out.println(m.get_name() + "has joined the network");
 	}
+	
 	/**
 	 * Method to add a new Task to the network
 	 * @param t the new task
@@ -51,6 +60,7 @@ public class Network {
 		System.out.println("A new task has been added to the network");
 
 	}
+	
 	/**
 	 * Method to remove a member from the network
 	 * @param m the member
@@ -75,6 +85,7 @@ public class Network {
 			this.l_members.remove(i);
 		}
 	}
+	
 	/**
 	 * Method to remove a task
 	 * @param t the task

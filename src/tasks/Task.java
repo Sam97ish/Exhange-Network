@@ -75,7 +75,7 @@ public class Task {
 			System.out.println("Running the task");
 			return this.patreon.debit(this);
 		}else {
-			System.out.println("The method can't be run");
+			System.out.println("The task can't be run");
 			return false;
 		}
 	}
