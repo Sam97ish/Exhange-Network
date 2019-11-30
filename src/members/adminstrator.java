@@ -1,38 +1,54 @@
 package members;
 
 import java.util.ArrayList;
+import java.util.concurrent.Callable;
 
 import reseau.*;
 import tasks.*;
 
 public class adminstrator extends Normal {
 	private Network nrk;
+	
 	//constructor with no skills 
-	public adminstrator(String n, int m){
-		super(n,m);
+	public adminstrator(String name, int money){
+		super(name,money);
 	}
 	
 	//constructor with skills given
-	public adminstrator(String n, int m, ArrayList<Service> s){
-		super(n,m,s);
+	public adminstrator(String name, int money, ArrayList<Service> skills){
+		super(name,money,skills);
 	}
 	
 	/**
 	 * creates a network with empty members and tasks
+	 * @param name of network
 	 */
-	public void createNetwork() {
-		this.nrk = new Network(this); 
-		System.out.println(" the admin : " + this.get_name() + " created a new Network");
+	public void createNetwork(String name) {
+		this.nrk = new Network(this, name); 
+		System.out.println(" the admin : " + this.get_name() + " created a new Network named " + name);
 	}
 	
 	/**
-	 * creates a network with existing memebers and tasks
+	 * creates a network with existing members and tasks
+	 * @param n is the name of the network
 	 * @param l_members
 	 * @param l_tasks
 	 */
-	public void createNetwork( ArrayList<Member> l_members,  ArrayList<Task> l_tasks) {
-		this.nrk = new Network(this,l_members,l_tasks); 
-		System.out.println(" the admin : " + this.get_name() + " created a new Network");
+	public void createNetwork(String name, ArrayList<Member> l_members,  ArrayList<Task> l_tasks) {
+		this.nrk = new Network(this,name,l_members,l_tasks); 
+		System.out.println(" the admin : " + this.get_name() + " created a new Network named " + name);
+	}
+	
+	/*
+	public void createMember(String name, int wallet, ArrayList<Service> skills, Callable<Member> socialclass) {
+		Member nem = ;  
+		this.addMember(nem);
+	}
+	*/
+	
+	public void createTask(Service s,String n , int nbwo, Member pa, double time, String desc) {
+		Task t = new Task(s,n,nbwo,pa,time,desc);
+		this.nrk.addTask(t);
 	}
 	
 	/**
@@ -41,19 +57,33 @@ public class adminstrator extends Normal {
 	 */
 	public void addMember(Member m) {
 		this.nrk.addMember(m);
+		System.out.println(" the admin : " + this.get_name() + " added  the member " + m.get_name() + 
+							" to the network " + this.nrk.get_name());
 	}
+	/**
+	 * adds an already created list of members.
+	 * caution : will overwrite the existing list of members.
+	 * @param l_m
+	 */
+	public void addMemberList(ArrayList<Member> l_m) {
+		this.nrk.addMemberList(l_m);
+		System.out.println(" the admin : " + this.get_name() + " added a list of members to the network " + this.nrk.get_name());
+	}
+
 	
 	public void addMember(String name, Member m) {
 		m.changeName(name);
 		this.nrk.addMember(m);
 	}
 	
+
 	/**
 	 * removes a member from the network
 	 * @param m member
 	 */
 	public void removeMember(Member m) {
 		this.nrk.removeMember(m);
+		System.out.println(" the admin : " + this.get_name() + " removed the member " + m.get_name());
 	}
 	
 	/**
@@ -62,6 +92,7 @@ public class adminstrator extends Normal {
 	 */
 	public void removeMember(String s) {
 		this.nrk.removeMember(s);
+		System.out.println(" the admin : " + this.get_name() + " removed the member " + s);
 	}
 	
 	public Member get_member(String name) {
@@ -78,7 +109,10 @@ public class adminstrator extends Normal {
 	public void runAll() {
 		this.nrk.runAllTasks();
 	}
-	
+	/**
+	 * runs a specific given task
+	 * @param tache
+	 */
 	public void runTask(Task tache) {
 		ArrayList<Task> l_tasks = this.nrk.get_tasks();
 		for(int i = 0; i < l_tasks.size(); i++) {
@@ -87,12 +121,23 @@ public class adminstrator extends Normal {
 			}
 		}
 	}
+	/**
+	 * method to add a task to the network
+	 * @param t
+	 */
+	public void addTask(Task t) {
+		this.nrk.addTask(t);
+		System.out.println(" the admin : " + this.get_name() + " added the task " + t.get_name() 
+							+ " to the network : " + this.nrk.get_name());
+	}
 	
 	/**
-	 * Method to remove a task
+	 * Method to remove a task from the network
 	 */
 	public void removeTask(Task t) {
 		this.nrk.removeTask(t);
+		System.out.println(" the admin : " + this.get_name() + " removed the task " + t.get_name()
+								+ " from the network : " + this.nrk.get_name());
 	}
 	
 	//TODO : ...
