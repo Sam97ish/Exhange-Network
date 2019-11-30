@@ -7,15 +7,25 @@ import tasks.Task;
 public abstract class Member {
 	private String name;
 	private double money;
-	ArrayList<Service> skills;
+	private ArrayList<Service> skills;
 	
-	//constructor with no skills 
+	/**
+	 * constructor of member without skills
+	 * @param name
+	 * @param money
+	 */
 	public Member(String n, int m){
 		this.name = n;
 		this.money = m;
 		this.skills = new ArrayList<Service>();
 	}
-	//constructor with skills given
+	
+	/**
+	 * contractor of member with a list of skills
+	 * @param n name
+	 * @param m money
+	 * @param s list of skills
+	 */
 	public Member(String n, int m, ArrayList<Service> s){
 		this.name = n;
 		this.money = m;
@@ -29,6 +39,7 @@ public abstract class Member {
 	public String get_name() {
 		return this.name;
 	} 
+	
 	/**
 	 * returns the wallet of member
 	 * @return double
@@ -37,6 +48,10 @@ public abstract class Member {
 		return this.money;
 	}
 	
+	/**
+	 * returns the list of skills of member
+	 * @return skills
+	 */
 	public ArrayList<Service> get_skills(){
 		return this.skills;
 	}
@@ -47,7 +62,7 @@ public abstract class Member {
 	 * @return boolean
 	 */
 	public boolean addSkill(Service s) {
-		System.out.println("added skill : " + s.get_name() + " to : " + this.name );
+		System.out.println("Added skill : " + s.get_name() + " to : " + this.name );
 		return this.skills.add(s);
 	}
 	
@@ -59,8 +74,16 @@ public abstract class Member {
 	 */
 	public boolean addSkill(String name, double cost) {
 		Service s = new Service(name,cost);
-		System.out.println("added skill : " + s.get_name() + " to : " + this.get_name() );
+		System.out.println("Added skill : " + s.get_name() + " to : " + this.get_name() );
 		return this.skills.add(s);
+	}
+	
+	/**
+	 * adds a predefined array of skills to the member
+	 * @param skills
+	 */
+	public void addSkillSet(ArrayList<Service> skills) {
+		this.skills = skills;
 	}
 	
 	/**
@@ -69,12 +92,21 @@ public abstract class Member {
 	 * @return void, prints.
 	 */
 	public boolean removeSkill(Service s) {
-		System.out.println("removed skill : " + s.get_name() + " from : " + this.get_name() );
+		System.out.println("Removed skill : " + s.get_name() + " from : " + this.get_name() );
 		return this.skills.remove(s);
 	}
 	
+	/**
+	 * removes a skill given it's name
+	 * @param name
+	 */
 	public void removeSkill(String name) {
-		
+		for(int i = 0; i < this.skills.size(); i++) {
+			if(this.skills.get(i).get_name().equals(name)) {
+				this.skills.remove(i);
+			}
+		}
+		System.out.println("Removed skill : " + name + " from : " + this.get_name() );
 		
 	}
 	
@@ -84,7 +116,6 @@ public abstract class Member {
 	 */
 	public void addMoney(double n) {
 		this.money += n;
-		System.out.println("added this amount of money : " + n + " to : " + this.get_name());
 	}
 	
 	/**
@@ -93,7 +124,6 @@ public abstract class Member {
 	 */
 	public boolean substractMoney(double n) {
 		this.money += n;
-		System.out.println("removed this amount of money : " + n + " from : " + this.get_name());
 		return true;
 	}
 	
@@ -126,8 +156,6 @@ public abstract class Member {
 	 * @param n  the new name
 	 */
 	public void changeName(String n) {
-		String old_name = this.get_name();
 		this.name = n;
-		System.out.println("Changed the name of the member from  " + old_name + "  to  " + this.get_name());
 	}
 }

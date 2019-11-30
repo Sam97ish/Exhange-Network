@@ -9,11 +9,18 @@ public class Service {
 		this.cost = c;
 	}
 	
-	//TODO: accesseurs
+	/**
+	 * returns the name of the service
+	 * @return string
+	 */
 	public String get_name() {
 		return this.name;
 	} 
 	
+	/**
+	 * returns the standard cost of the service
+	 * @return double
+	 */
 	public double get_cost() {
 		return this.cost;
 	} 

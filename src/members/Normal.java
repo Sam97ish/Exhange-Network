@@ -6,17 +6,28 @@ import tasks.Task;
 
 public class Normal extends Member {
 	
-	//constructor with no skills 
+	/**
+	 * contractor of the member of type normal with no skills given
+	 * @param n name
+	 * @param m money 
+	 */
 	public Normal(String n, int m){
 		super(n,m);
 	}
 	
-	//constructor with skills given
+	/**
+	 * contractor of the member of type normal with  skills given
+	 * @param n name
+	 * @param m money 
+	 * @param s list of skills
+	 */
 	public Normal(String n, int m, ArrayList<Service> s){
 		super(n,m,s);
 	}
 	
-	//constructor without anything
+	/**
+	 * constructor with nothing given used only by administrators
+	 */
 	public Normal() {
 		super("",0);
 	}
@@ -31,11 +42,11 @@ public class Normal extends Member {
 		ArrayList<Member> l_workers = tache.get_l_worker();
 		for(int i = 0; i < l_workers.size(); i++) {
 			l_workers.get(i).addMoney(paycheck);
-			System.out.println("the worker : " + l_workers.get(i).get_name() + " has been payed : " + paycheck
+			System.out.println("The worker : " + l_workers.get(i).get_name() + " has been paid : " + paycheck
 								+ " by : " + this.get_name() + " for the job : " + tache.get_serv().get_name());
 		}
 		
-		System.out.println(this.get_name() + " has payed " + finalcost + " for job's description : " + tache.get_description());
+		System.out.println(this.get_name() + " has paid " + finalcost + " for the job : " + tache.get_name() + ", Description : " + tache.get_description());
 		return this.substractMoney(-finalcost);
 	}
 

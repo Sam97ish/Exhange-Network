@@ -10,24 +10,37 @@ public class Network {
 	private ArrayList<Member> l_members;
 	private ArrayList<Task> l_tasks;
 	
-	//constructor with empty lists
+	/**
+	 * constructor of the network given it's admin and the name
+	 * @param adm administrator
+	 * @param n name
+	 */
 	public Network(Member adm,String n) {
 		this.admin = adm;
 		this.name = n;
 		
 		this.l_members = new ArrayList<Member>();
 		this.l_tasks = new ArrayList<Task>();
+		
+		this.l_members.add(adm);
 	}
 	
-	//constructor with full lists given
+	/**
+	 * constructor of the network given all it's requirements
+	 * @param adm administrator
+	 * @param n name of network
+	 * @param l_m list of members
+	 * @param l_t list of tasks
+	 */
 	public Network(Member adm,String n, ArrayList<Member> l_m, ArrayList<Task> l_t) {
 		this.admin = adm;
 		this.name = n;
 		
 		this.l_members = l_m;
 		this.l_tasks = l_t;
+		
+		this.l_members.add(adm);
 	}
-	
 	
 	/**
 	 * method returns the list of members.
@@ -44,7 +57,11 @@ public class Network {
 		return this.l_tasks;
 	}
 	
-
+	/**
+	 * returns a member given his name
+	 * @param name
+	 * @return member or null if not found
+	 */
 	public Member get_member(String name) {
 		for(int i=0 ; i < this.l_members.size() ; i++) {
 			if(this.l_members.get(i).get_name().equalsIgnoreCase(name)) {
@@ -53,7 +70,7 @@ public class Network {
 		}
 		System.out.println("Member not found");
 		return null;
-		
+	}
 
 	/**
 	 * returns the name of the network
@@ -63,7 +80,6 @@ public class Network {
 		return this.name;
 
 	}
-	
 	
 	/**
 	 * Method to add a new member to the network
@@ -132,7 +148,15 @@ public class Network {
 	 */
 	public void runAllTasks() {
 		for(int i=0 ; i < this.l_tasks.size() ; i++ ) {
-			this.l_tasks.get(i).runTask();
+			this.l_tasks.get(i).runTask(this);
 		}
+	}
+	
+	/**
+	 * adds a list of tasks. deletes all existing tasks in list.
+	 * @param t list of tasks
+	 */
+	public void addTaskList(ArrayList<Task> t) {
+		this.l_tasks = t;
 	}
 }
