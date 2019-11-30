@@ -15,6 +15,12 @@ public class Normal extends Member {
 	public Normal(String n, int m, ArrayList<Service> s){
 		super(n,m,s);
 	}
+	
+	//constructor without anything
+	public Normal() {
+		super("",0);
+	}
+	
 
 	@Override
 	public boolean debit(Task tache) {

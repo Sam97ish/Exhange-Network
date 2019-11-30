@@ -43,6 +43,11 @@ public class adminstrator extends Normal {
 		this.nrk.addMember(m);
 	}
 	
+	public void addMember(String name, Member m) {
+		m.changeName(name);
+		this.nrk.addMember(m);
+	}
+	
 	/**
 	 * removes a member from the network
 	 * @param m member
@@ -58,6 +63,12 @@ public class adminstrator extends Normal {
 	public void removeMember(String s) {
 		this.nrk.removeMember(s);
 	}
+	
+	public Member get_member(String name) {
+		return this.nrk.get_member(name);
+	}
+	
+	
 	
 	/**
 	 * runs all the tasks that are possible. two conditions must be met:

@@ -41,6 +41,17 @@ public class Network {
 		return this.l_tasks;
 	}
 	
+	public Member get_member(String name) {
+		for(int i=0 ; i < this.l_members.size() ; i++) {
+			if(this.l_members.get(i).get_name().equalsIgnoreCase(name)) {
+				return this.l_members.get(i);
+			}
+		}
+		System.out.println("Member not found");
+		return null;
+		
+	}
+	
 	
 	/**
 	 * Method to add a new member to the network

@@ -116,4 +116,14 @@ public abstract class Member {
 	public Object createTask(Service service, int nbWorkers, double duration, String description) {
 		return new Task(service, nbWorkers, this, duration, description);
 	}
+	
+	/**
+	 * Method for changing the member name 
+	 * @param n  the new name
+	 */
+	public void changeName(String n) {
+		String old_name = this.get_name();
+		this.name = n;
+		System.out.println("Changed the name of the member from  " + old_name + "  to  " + this.get_name());
+	}
 }

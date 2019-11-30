@@ -16,6 +16,11 @@ public class Zero extends Member {
 	public Zero(String n, int m, ArrayList<Service> s){
 		super(n,m,s);
 	}
+	
+	//constructor without anything
+	public Zero() {
+		super("",0);
+	}
 
 	@Override
 	public boolean debit(Task tache) {
