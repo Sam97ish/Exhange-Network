@@ -2,6 +2,7 @@ package tasks;
 
 import java.util.ArrayList;
 import members.*;
+import networkExceptions.*;
 import reseau.Network;
 
 public class Task {
@@ -13,6 +14,7 @@ public class Task {
 	private ArrayList<Member> l_workers;
 	private String description;
 	private boolean ready;
+	private boolean voluntary;
 	
 	/**
 	 * constructor of a task given all it's requirements except the list of workers
@@ -22,14 +24,16 @@ public class Task {
 	 * @param pa patron, the member that is offering the task
 	 * @param time the time needed to finish the task
 	 * @param desc the description of the task
+	 * @param voluntary; boolean is it for free or nah
 	 */
-	public Task(Service s,String n , int nbwo, Member pa, double time, String desc) {
+	public Task(Service s,String n , int nbwo, Member pa, double time, String desc, boolean voluntary) {
 		this.serv = s;
 		this.nbworkers = nbwo;
 		this.patreon = pa;
 		this.duration = time;
 		this.description = desc;
 		this.name =n;
+		this.voluntary = voluntary;
 		
 		this.l_workers = new ArrayList<Member>();
 		this.ready = false;
@@ -44,17 +48,27 @@ public class Task {
 	 * @param time the time needed to finish the task
 	 * @param desc the description of the task
 	 * @param l_wo list of members who are going to do the task (workers)
+	 * @param voluntary; boolean is it for free or nah
 	 */
-	public Task(Service s,String n , int nbwo, Member pa, double time, String desc, ArrayList<Member> l_wo) {
+	public Task(Service s,String n , int nbwo, Member pa, double time, String desc, ArrayList<Member> l_wo, boolean voluntary) {
 		this.serv = s;
 		this.nbworkers = nbwo;
 		this.patreon = pa;
 		this.duration = time;
 		this.description = desc;
 		this.name = n;
+		this.voluntary = voluntary;
 		
 		this.l_workers = l_wo;
 		this.ready = false;
+	}
+	
+	/**
+	 * returns true if this task is voluntary ie chairty work ie for free.
+	 * @return
+	 */
+	public boolean isVoluntary() {
+		return this.voluntary;
 	}
 	
 	/**
@@ -129,7 +143,11 @@ public class Task {
 	 * @return true if the function runs without any problems or false if the task is not ready(no workers or no enough money ) 
 	 */
 	public boolean runTask(Network n){
-		this.searchWorkers(n);
+		try {
+			this.searchWorkers(n);
+		} catch (ExceptionNotEnoughWorkers | ExceptionNotEnoughMoney e) {
+			System.out.println(e);
+		}
 		if(this.ready) {
 			return this.patreon.debit(this);
 		}else {
@@ -141,7 +159,7 @@ public class Task {
 	 * method that search and add workers that can provide the service needed and verifies whether the task is ready or not
 	 * @param n refers to the network
 	 */
-	public void searchWorkers(Network n) {
+	public void searchWorkers(Network n) throws ExceptionNotEnoughWorkers, ExceptionNotEnoughMoney {
 		ArrayList<Member> l_mem = n.get_members();
 		int i=0;
 		while(i < l_mem.size() && this.l_workers.size() <= this.nbworkers) {
@@ -157,7 +175,7 @@ public class Task {
 				if(this.patreon.get_wallet() >= this.cost()) {
 					this.ready=true;
 				}else { // if patron has not enough money
-					System.out.println("The patron doesn't have enough money !");
+					throw new ExceptionNotEnoughMoney(this.get_patreon().get_name() + " doesn't have enough money to do the task : " + this.get_name());
 					}
 			}
 			
@@ -165,7 +183,7 @@ public class Task {
 				if(this.patreon.get_wallet() >= this.cost()/2) {
 					this.ready=true;
 				}else { // if patron has not enough money
-					System.out.println("The patron doesn't have enough money !");
+					throw new ExceptionNotEnoughMoney(this.get_patreon().get_name() + " doesn't have enough money to do the task : " + this.get_name());
 					}
 				
 			}
@@ -177,7 +195,9 @@ public class Task {
 			
 			
 		}else { // no enough workers
-			System.out.println("There are no enough workers to do the task : " + this.name + " demanded by : " + this.patreon.get_name());
+			
+			throw new ExceptionNotEnoughWorkers("There are no enough workers to do the task : " + this.get_name() + " demanded by : " + this.patreon.get_name());
+			
 		}
 	}
 }

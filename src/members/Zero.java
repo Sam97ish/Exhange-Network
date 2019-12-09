@@ -35,8 +35,28 @@ public class Zero extends Member {
 
 	@Override
 	public boolean debit(Task tache) {
-		System.out.println(this.get_name() + " is privileged enought not pay a dime ! for the job " + tache.get_name() + " , Description " + tache.get_description());
-		return true;
+		//in case of a voluntary task, show who volunteered for it
+		ArrayList<Member> l_workers = tache.get_l_worker();
+		
+		if(tache.isVoluntary()) {
+			
+			for(int i = 0; i < l_workers.size(); i++) {
+				
+				System.out.println("The volunteer : " + l_workers.get(i).get_name() + " has participaited : " + " in the task : " + tache.get_name());
+			}
+			
+			System.out.println(this.get_name() + " has had their voluntary task : " + tache.get_name() + ", finished by the members");
+			
+			return true;
+			
+		}else {
+			
+			System.out.println(this.get_name() + " is privileged enought not pay a dime ! for the job " + tache.get_name() + " , Description " + tache.get_description());
+			
+			return true;
+		}
+		
+
 	}
 	
 	

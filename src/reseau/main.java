@@ -54,13 +54,13 @@ public class main {
 		tom.addSkill(cleaner);
 		
 		//creating a pool of tasks
-		Task mowing = new Task(gardener, "Mowing the lawn", 3, Sam, 2, "my grass is getting too high"); // should work just fine
-		Task building = new Task(builder, "Building a house", 2, chelsea, 2, "I need a summer house guys"); //check if chelsea paid half which is = 800 she should have 200 left 
-		Task cleaning = new Task(cleaner, "Cleaning", 5, Sam, 2, "I shouldn't have stopped time for 6 months.."); //this task shouldn't be done because we are missing a cleaner
-		Task deliveyT = new Task(delivery, "Delivary", 2, tom, 2, "I need my Pizza NOW"); // check if tom paid nothing
-		Task teaching = new Task(professor, "Teaching", 2, tom, 2, "I need help with homework"); // should work because we added another professor using admin
-		Task painting = new Task(painter, "Painting the fence", 2, abra, 2, "My Fence is ugly ughh !"); // make sure that only two of our three painters do the job
-		Task programming = new Task(programmer, "Programming", 1, Sam, 2, "Sam needs some help with his project"); // only sam is a programmer so this shouldn't work
+		Task mowing = new Task(gardener, "Mowing the lawn", 3, Sam, 2, "my grass is getting too high", false); // should work just fine
+		Task building = new Task(builder, "Building a house", 2, chelsea, 2, "I need a summer house guys", true); //check if chelsea paid half which is = 800 she should have 200 left 
+		Task cleaning = new Task(cleaner, "Cleaning", 5, Sam, 2, "I shouldn't have stopped time for 6 months..", false); //this task shouldn't be done because we are missing a cleaner
+		Task deliveyT = new Task(delivery, "Delivary", 2, tom, 2, "I need my Pizza NOW", true); // check if tom paid nothing
+		Task teaching = new Task(professor, "Teaching", 2, tom, 2, "I need help with homework", false); // should work because we added another professor using admin
+		Task painting = new Task(painter, "Painting the fence", 2, abra, 2, "My Fence is ugly ughh !", false); // make sure that only two of our three painters do the job
+		Task programming = new Task(programmer, "Programming", 1, Sam, 2, "Sam needs some help with his project", false); // only sam is a programmer so this shouldn't work
 		
 		ArrayList<Task> tasks = new ArrayList<Task>();
 		tasks.add(mowing);
@@ -130,4 +130,3 @@ public class main {
 	}
 
 }
- 

@@ -147,8 +147,8 @@ public abstract class Member {
 	 * @param l_workers
 	 * @return (Object) (Task)
 	 */
-	public Object createTask(Service service,String n , int nbWorkers, double duration, String description) {
-		return new Task(service,n , nbWorkers, this, duration, description);
+	public Object createTask(Service service,String n , int nbWorkers, double duration, String description, boolean isvol) {
+		return new Task(service,n , nbWorkers, this, duration, description, isvol);
 	}
 	
 	/**
