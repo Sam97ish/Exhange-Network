@@ -129,12 +129,13 @@ public class Task {
 	}
 	
 	/**
-	 * returns the final cost of the task whcih is duration * nb of workers * standard cost of the service/job
+	 * returns the final cost of the task which is duration * nb of workers * standard cost of the service/job
 	 * @return
 	 */
 	public double cost() {
 		Service s = this.get_serv();
-		return this.get_duration() * this.get_nbworkers() * s.get_cost();
+		int x = (int) (this.get_duration() * this.get_nbworkers() * s.get_cost());
+		return x;
 	}
 	
 	/**
