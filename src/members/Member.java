@@ -120,7 +120,7 @@ public abstract class Member {
 	
 	/**
 	 * a method that removes a given amount of money from member
-	 * @param n
+	 * @param n is negative
 	 */
 	public boolean substractMoney(double n) {
 		this.money += n;
