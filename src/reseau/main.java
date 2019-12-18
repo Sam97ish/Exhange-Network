@@ -43,15 +43,18 @@ public class main {
 		abra.addSkill(cleaner);
 		abra.addSkill(delivery);
 		abra.addSkill(painter);
+		System.out.println(" ");
 		
 		Member chelsea = new Half("Chelsea", 2000);
 		chelsea.addSkill(gardener);
 		chelsea.addSkill(cleaner);
 		chelsea.addSkill(painter);
+		System.out.println(" ");
 		
 		Member tom = new Zero("Tom", 2000);
 		tom.addSkill(gardener);
 		tom.addSkill(cleaner);
+		System.out.println(" ");
 		
 		//creating a pool of tasks
 		Task mowing = new Task(gardener, "Mowing the lawn", 3, Sam, 2, "my grass is getting too high", false); // should work just fine
@@ -74,15 +77,18 @@ public class main {
 
 		//creating a network called mukalla
 		Sam.createNetwork("Mukalla");
+		System.out.println(" ");
 		
 		//adding preexisting members
 		Sam.addMember(abra);
 		Sam.addMember(chelsea);
 		Sam.addMember(tom);
+		System.out.println(" ");
 		
 		//creating a new member "Alaa" using admin and adding to him a new skill
 		Sam.createMember("Alaa", 500, new Normal());
 		Sam.get_member("Alaa").addSkill(professor);
+		System.out.println(" ");
 		
 		//adding the tasks to the network
 		Sam.addTaskList(tasks);
@@ -91,6 +97,7 @@ public class main {
 		Sam.runAll();
 		
 		//showing everyone's wallet
+		System.out.println(" ");
 		System.out.println("Alaa's wallet is at : " + Sam.get_member("Alaa").get_wallet());
 		System.out.println("Sam's wallet is at : " + Sam.get_member("Sam").get_wallet());
 		System.out.println("Abra's wallet is at : " + Sam.get_member("Abrahim").get_wallet());
