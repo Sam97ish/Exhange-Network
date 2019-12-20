@@ -7,8 +7,8 @@ import tasks.*;
 
 public class adminstrator extends Normal {
 	private Network nrk;
-	private boolean accessprivilage;
-	private String password;
+	//private boolean accessprivilage;
+	//private String password;
 	
 	/**
 	 * creates an object admin with name and money
@@ -17,8 +17,8 @@ public class adminstrator extends Normal {
 	 */
 	public adminstrator(String name, int money){
 		super(name,money);
-		this.accessprivilage = false;
-		this.password = "0000";
+		//this.accessprivilage = false;
+		//this.password = "0000";
 	}
 	
 	/**
@@ -29,8 +29,8 @@ public class adminstrator extends Normal {
 	 */
 	public adminstrator(String name, int money, ArrayList<Service> skills){
 		super(name,money,skills);
-		this.accessprivilage = false;
-		this.password = "0000";
+		//this.accessprivilage = false;
+		//this.password = "0000";
 	}
 	
 	/**
@@ -185,6 +185,7 @@ public class adminstrator extends Normal {
 		System.out.println("The Admin : " + this.get_name() + " removed the task : " + t.get_name()
 								+ " from the network : " + this.nrk.get_name());
 	}
+	
 	/* //gives the user admin privilages.
 	 
 	public boolean get_privilage() {
