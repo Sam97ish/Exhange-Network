@@ -16,7 +16,7 @@ public class main {
 		Service builder = new Service("building", 200);
 		Service driver = new Service("driving", 50);
 		Service babysitter = new Service("babysitting", 10);
-		Service delivery = new Service("derlivering", 50);
+		Service delivery = new Service("delivering", 50);
 		Service accountant = new Service("accounting", 300);
 		Service programmer = new Service("programming", 300);
 		Service professor = new Service("teaching", 300);
